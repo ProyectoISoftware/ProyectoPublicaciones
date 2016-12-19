@@ -20,9 +20,24 @@ namespace Publicaciones.Models
 
         public DateTime Fecha { get; set; }
 
-        public Categoria CategoriaPublicar { get; set; }  
+        public Categoria CategoriaPublicar { get; set; }  // ???
 
-        public Categoria CategoriaIndizar { get; set; }  
+        public Categoria CategoriaIndizar { get; set; }  // ???
+
+        public Publicacion( int id, string doi, int pagIni, int paginaIni, int volumen, string issue, int pagFin, int numArt, int año, int mes, int dia, Categoria catIndi, Categoria catPub){
+            this.Id=id;
+            this.DOI=doi;
+            this.PaginaInicio=pagIni;
+
+            this.Volumen=volumen;
+            this.Issue=issue;
+            this.PaginaFinal=pagFin;
+            this.NumeroArticulo= numArt;
+            this.Fecha= new DateTime(año,mes,dia);
+
+            this.CategoriaPublicar= catPub;
+            this.CategoriaIndizar= catIndi;
+        }
     
     }
 }
