@@ -6,7 +6,7 @@ namespace Publicaciones.Models
     public class Persona
     {
 
-        public string Id { get; set; }
+        public int Id { get; set; }
         
         public string Rut { get; set; }
 

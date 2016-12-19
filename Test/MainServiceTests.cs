@@ -74,19 +74,67 @@ namespace Publicaciones.Service {
         [Fact]
         public void testObtenerPublicaciones()
         {
-            //
+            Logger.LogInformation("Testing IMainService.ObtenerPublicaciones() ..");
+            //Limpiar publicaciones
+            Service.vaciarPublicaciones();
+            //Obtener publicaciones -> debe ser cero
+            List <Publicacion> listPublicaciones = Service.obtenerPublicaciones();
+            Assert.True(listPublicaciones.Count == 0);
+            Logger.LogInformation("ObtenerPublicaciones vacio ok");
+            //Ingresar 1 publicacion
+            int id = 10;
+            string doi = "aa11";
+            int pagIn = 5;
+            int volumen = 12;
+            string issue = "issue1";
+            int pagFin = 15;
+            int numArt = 15;
+            int año = 2010;
+            int mes = 10;
+            int dia = 5;
+            Categoria catInd = null;
+            Categoria catPub = null;
+
+            Publicacion p = new Publicacion(id, doi, pagIn, volumen, issue, pagFin, numArt, año, mes, dia, catInd, catPub);
+            
+            Service.addPublicacion(p);
+            //Obtener publicaciones -> debe ser canitdad 1
+            //                      -> datos que se ingresaron deben ser equivalentes al original
+            listPublicaciones = Service.obtenerPublicaciones();
+
+            Assert.True(listPublicaciones.Count == 1);
+            Assert.True(listPublicaciones[0].Equals(p));
+
+            Logger.LogInformation("ObtenerPublicaciones una publicacion ok");
+            //Ingresar 28 nuevas publicaciones
+            for( int i = 1; i <= 28; i++){
+                id = 10 + i;
+                doi = "aa11" + i;
+                pagIn = 5 + i;
+                volumen = 12 + i;
+                issue = "issue1" + i;
+                pagFin = 15 + i;
+                numArt = 15 + i;
+                año = 2010;
+                mes = 10;
+                dia = 1 + i;
+                catInd = null;
+                catPub = null;
+
+                p = new Publicacion(id, doi, pagIn, volumen, issue, pagFin, numArt, año, mes, dia, catInd, catPub);
+                Service.addPublicacion(p);
+            }
+            //Obtener publicaciones -> debe ser cantidad 29
+            Assert.True(listPublicaciones.Count == 29);
+
+            Logger.LogInformation("ObtenerPublicaciones varias publicaciones ok");
+
+            Logger.LogInformation("Test IMainService.ObtenerPublicaciones() ok");
         }
 
         void IDisposable.Dispose()
         {
-            //Limpiar publicaciones
-            
-            //Obtener publicaciones -> debe ser cero
-            //Ingresar 1 publicacion
-            //Obtener publicaciones -> debe ser canitdad 1
-            //                      -> datos que se ingresaron deben ser equivalentes al original
-            //Ingresar 38 nuevas publicaciones
-            //Obtener publicaciones -> debe ser cantidad 39
+             // Aca eliminar el Service
         }
     }
 

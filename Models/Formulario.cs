@@ -2,6 +2,8 @@ namespace Publicaciones.Models
 {
     public class Formulario{
 
+        public int Id { get; set; }
+
         public string fechaRealizada { get; set; }
 
         public string fechaFinal { get; set; }

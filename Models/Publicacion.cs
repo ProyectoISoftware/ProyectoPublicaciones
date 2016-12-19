@@ -20,11 +20,11 @@ namespace Publicaciones.Models
 
         public DateTime Fecha { get; set; }
 
-        public Categoria CategoriaPublicar { get; set; }  // ???
+        public Categoria CategoriaPublicar { get; set; }  
 
-        public Categoria CategoriaIndizar { get; set; }  // ???
+        public Categoria CategoriaIndizar { get; set; }  
 
-        public Publicacion( int id, string doi, int pagIni, int paginaIni, int volumen, string issue, int pagFin, int numArt, int año, int mes, int dia, Categoria catIndi, Categoria catPub){
+        public Publicacion( int id, string doi, int pagIni, int volumen, string issue, int pagFin, int numArt, int año, int mes, int dia, Categoria catIndi, Categoria catPub){
             this.Id=id;
             this.DOI=doi;
             this.PaginaInicio=pagIni;
@@ -38,6 +38,20 @@ namespace Publicaciones.Models
             this.CategoriaPublicar= catPub;
             this.CategoriaIndizar= catIndi;
         }
-    
+
+        public bool Equals(Publicacion p){
+
+            bool var = this.Id == p.Id;
+            var = var && this.DOI == p.DOI;
+            var = var && this.PaginaInicio == p.PaginaInicio;
+            var = var && this.Volumen == p.Volumen;
+            var = var && this.Issue == p.Issue;
+            var = var && this.PaginaFinal == p.PaginaFinal;
+            var = var && this.NumeroArticulo == p.NumeroArticulo;
+            var = var && DateTime.Compare(this.Fecha, p.Fecha) == 0;
+            var = var && this.CategoriaPublicar.Equals(p.CategoriaPublicar);
+            var = var && this.CategoriaIndizar.Equals(p.CategoriaIndizar);
+            return var;
+        }
     }
 }

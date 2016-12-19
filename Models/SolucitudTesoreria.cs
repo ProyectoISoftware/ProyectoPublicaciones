@@ -4,6 +4,7 @@ namespace Publicaciones.Models
 {
     public class SolicitudTesoreria{
 
+        public int Id { get; set; }
         public DateTime fechaRealizada;
         public DateTime fechaRecepcionFinanza;
         public int numeroAsignado;

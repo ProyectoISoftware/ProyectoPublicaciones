@@ -12,7 +12,7 @@ namespace Publicaciones.Models
 
         public DateTime Fecha { get; set; }
 
-        public Indice Indice { get; set; }  // ???
+        public Indice Indice { get; set; }  
 
         public Categoria(int id, string q, float jif, int año, int mes, int dia, Indice indi){
             this.Id=id;

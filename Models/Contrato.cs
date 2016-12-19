@@ -18,6 +18,6 @@ namespace Publicaciones.Models
 
         public string Tipo { get; set; }
 
-        public Unidad Unidad { get; set; }  // ???
+        public Unidad Unidad { get; set; } 
     }
 }
