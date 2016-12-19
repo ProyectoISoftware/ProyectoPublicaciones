@@ -74,13 +74,18 @@ namespace Publicaciones.Service {
         [Fact]
         public void testObtenerPublicaciones()
         {
+
             Logger.LogInformation("Testing IMainService.ObtenerPublicaciones() ..");
+
             //Limpiar publicaciones
             Service.vaciarPublicaciones();
+
             //Obtener publicaciones -> debe ser cero
             List <Publicacion> listPublicaciones = Service.obtenerPublicaciones();
             Assert.True(listPublicaciones.Count == 0);
-            Logger.LogInformation("ObtenerPublicaciones vacio ok");
+
+            Logger.LogInformation("ObtenerPublicaciones vacio ok "+listPublicaciones.Count);
+
             //Ingresar 1 publicacion
             int id = 10;
             string doi = "aa11";
@@ -107,6 +112,7 @@ namespace Publicaciones.Service {
 
             Logger.LogInformation("ObtenerPublicaciones una publicacion ok");
             //Ingresar 28 nuevas publicaciones
+
             for( int i = 1; i <= 28; i++){
                 id = 10 + i;
                 doi = "aa11" + i;
@@ -124,12 +130,16 @@ namespace Publicaciones.Service {
                 p = new Publicacion(id, doi, pagIn, volumen, issue, pagFin, numArt, año, mes, dia, catInd, catPub);
                 Service.addPublicacion(p);
             }
+            
             //Obtener publicaciones -> debe ser cantidad 29
+            listPublicaciones = Service.obtenerPublicaciones();
+
             Assert.True(listPublicaciones.Count == 29);
 
             Logger.LogInformation("ObtenerPublicaciones varias publicaciones ok");
 
             Logger.LogInformation("Test IMainService.ObtenerPublicaciones() ok");
+            
         }
 
         void IDisposable.Dispose()

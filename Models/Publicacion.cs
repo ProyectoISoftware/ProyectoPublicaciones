@@ -24,6 +24,10 @@ namespace Publicaciones.Models
 
         public Categoria CategoriaIndizar { get; set; }  
 
+        public Publicacion(){
+
+        }
+
         public Publicacion( int id, string doi, int pagIni, int volumen, string issue, int pagFin, int numArt, int año, int mes, int dia, Categoria catIndi, Categoria catPub){
             this.Id=id;
             this.DOI=doi;
@@ -49,8 +53,12 @@ namespace Publicaciones.Models
             var = var && this.PaginaFinal == p.PaginaFinal;
             var = var && this.NumeroArticulo == p.NumeroArticulo;
             var = var && DateTime.Compare(this.Fecha, p.Fecha) == 0;
-            var = var && this.CategoriaPublicar.Equals(p.CategoriaPublicar);
-            var = var && this.CategoriaIndizar.Equals(p.CategoriaIndizar);
+            if(this.CategoriaPublicar != null){
+                var = var && this.CategoriaPublicar.Equals(p.CategoriaPublicar);
+            }
+            if(this.CategoriaIndizar != null){
+                var = var && this.CategoriaIndizar.Equals(p.CategoriaIndizar);
+            }
             return var;
         }
     }

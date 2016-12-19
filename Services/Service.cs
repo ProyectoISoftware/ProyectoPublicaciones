@@ -121,6 +121,7 @@ namespace Publicaciones.Service {
                 BackendContext.Publicaciones.Remove(entity);
                 BackendContext.SaveChanges();
             }
+
         }
 
         public void addPublicacion(Publicacion p)
@@ -134,7 +135,7 @@ namespace Publicaciones.Service {
 
         public List<Publicacion> obtenerPublicaciones()
         {
-           return BackendContext.Publicaciones.ToList();
+            return BackendContext.Publicaciones.ToList();
         }
     }
 
