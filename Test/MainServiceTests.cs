@@ -71,9 +71,22 @@ namespace Publicaciones.Service {
             Logger.LogInformation("Test IMainService.Initialize() ok");
         }
 
+        [Fact]
+        public void testObtenerPublicaciones()
+        {
+            //
+        }
+
         void IDisposable.Dispose()
         {
-            // Aca eliminar el Service
+            //Limpiar publicaciones
+            
+            //Obtener publicaciones -> debe ser cero
+            //Ingresar 1 publicacion
+            //Obtener publicaciones -> debe ser canitdad 1
+            //                      -> datos que se ingresaron deben ser equivalentes al original
+            //Ingresar 38 nuevas publicaciones
+            //Obtener publicaciones -> debe ser cantidad 39
         }
     }
 

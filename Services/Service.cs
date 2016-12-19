@@ -17,7 +17,13 @@ namespace Publicaciones.Service {
 
         List <Persona> Personas();
 
-        void Initialize(); 
+        void Initialize();
+
+        void vaciarPublicaciones();
+
+        void addPublicacion(Publicacion p);
+
+        List<Publicacion> obtenerPublicaciones();
     }
 
     /// <summary>
@@ -106,6 +112,21 @@ namespace Publicaciones.Service {
             Initialized = true;
 
             Logger.LogDebug("Inicializacion terminada :)");
+        }
+
+        public void vaciarPublicaciones()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void addPublicacion(Publicacion p)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Publicacion> obtenerPublicaciones()
+        {
+            throw new NotImplementedException();
         }
     }
 
