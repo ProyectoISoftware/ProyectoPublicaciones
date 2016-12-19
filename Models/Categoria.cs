@@ -23,5 +23,15 @@ namespace Publicaciones.Models
 
             this.Indice= indi;
         }
+
+        public bool Equals(Categoria c ){
+            bool var = this.Id == c.Id;
+            var = var && this.Q.Equals(c.Q);
+            var = var && this.JIF == c.JIF;
+            var = var && this.Indice.Equals(c.Indice);
+            int result = DateTime.Compare(this.Fecha, c.Fecha);
+            if(result!=0){var =false;}
+            return var;
+        }
     }
 }

@@ -10,5 +10,11 @@ namespace Publicaciones.Models
             this.Id= id;
             this.Nombre= nombre;
         }
+
+        public bool Equals(Indice i ){
+            bool var = this.Id == i.Id;
+            var = var && this.Nombre.Equals(i.Nombre);
+            return var;
+        }
     }
 }
