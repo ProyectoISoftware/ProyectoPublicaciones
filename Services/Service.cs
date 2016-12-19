@@ -114,19 +114,27 @@ namespace Publicaciones.Service {
             Logger.LogDebug("Inicializacion terminada :)");
         }
 
+
         public void vaciarPublicaciones()
         {
-            throw new NotImplementedException();
+            foreach (var entity in BackendContext.Publicaciones){
+                BackendContext.Publicaciones.Remove(entity);
+                BackendContext.SaveChanges();
+            }
         }
 
         public void addPublicacion(Publicacion p)
         {
-            throw new NotImplementedException();
+            // Guardo la Persona en el Backend
+            BackendContext.Publicaciones.Add(p); 
+
+            // Guardo los cambios
+            BackendContext.SaveChanges();
         }
 
         public List<Publicacion> obtenerPublicaciones()
         {
-            throw new NotImplementedException();
+           return BackendContext.Publicaciones.ToList();
         }
     }
 
